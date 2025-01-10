@@ -1,0 +1,35 @@
+<% layout("/layouts/boilerplate", { bodyClass: 'form-page' }) %>
+
+<body>
+    <h1>Admin Dashboard</h1>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Property Address</th>
+                <th>Property Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% bookings.forEach(booking => { %>
+                <tr>
+                    <td><%= booking.name %></td>
+                    <td><%= booking.email %></td>
+                    <td><%= booking.phoneNumber %></td>
+                    <td><%= booking.propertyAddress %></td>
+                    <td><%= booking.propertyType %></td>
+                    <td>
+                        <form method="POST" action="/listings/delete-booking/<%= booking._id %>?_method=DELETE" >
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    
+
+</body>

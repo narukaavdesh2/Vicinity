@@ -1,0 +1,81 @@
+<% layout("/layouts/boilerplate", { bodyClass: 'form-page' }) %>
+
+    <body>
+        <% if (success_message) { %>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <%= success_message %>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <% } %>
+
+                <% if (error_message) { %>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <%= error_message %>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <% } %>
+
+                        <h3>Create a New Listing</h3>
+
+                        <form method="POST" action="/listings/admin/new">
+
+
+                            <!-- title -->
+                            <div>
+                                <label for="title" class="form-label">Title*</label>
+                                <input name="listing[title]" placeholder="enter title" type="text"
+                                    class="form-control">
+                            </div>
+
+                            <br><br>
+
+                            <!-- description -->
+                            <div>
+                                <label for="description" class="form-label">Description</label>
+                                <textarea name="listing[description]" class="form-control"></textarea>
+                            </div>
+
+                            <!--Property Image -->
+                            <div>
+                                <label for="image" class="from-label">Image Link*</label>
+                                <input name="listing[image]" placeholder="enter image URL/Link" type="text" class="form-control">
+                            </div>
+
+                            <br>
+                            <br>
+
+                            <!-- Property Price -->
+                            <div>
+                                <label for="Price" class="form-label">Price*</label>
+                                <input name="listing[price]" placeholder="enter Price" type="number"
+                                    class="form-control">
+                            </div>
+
+                            <br>
+
+                            <!-- Property Location -->
+                            <div>
+                                <label for="location" class="form-label">Property Address</label>
+                                <input name="listing[location]" placeholder="Enter location" type="text"
+                                    class="form-control">
+                            </div>
+
+                            <br><br>
+
+                             <!-- Country -->
+                             <div>
+                                <label for="country" class="form-label">Country*</label>
+                                <input name="listing[country]" placeholder="enter Country's Name" type="text"
+                                    class="form-control">
+                            </div>
+
+                            <br>
+
+                            <button class="btn btn-dark"
+                                style="display: block; margin: 20px auto; width: 200px;">Add</button>
+                        </form>
+
+                        <br>
+
+                        <script src="/javascript/newJavascript.js" defer></script>
+    </body>

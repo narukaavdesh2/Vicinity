@@ -1,0 +1,137 @@
+<% layout("/layouts/boilerplate", { bodyClass: 'form-page' }) %>
+
+    <body>
+        <% if (success_message) { %>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <%= success_message %>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <% } %>
+
+                <% if (error_message) { %>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <%= error_message %>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <% } %>
+
+
+                        
+                        <h3>Please tell us how we can help you. Only fields marked with * are required. Your information
+                            is protected by our privacy policy.</h3>
+
+                        <form method="POST" action="/listings/booking">
+                            <!-- Name -->
+                            <div>
+                                <label for="name" class="from-label">Name*</label>
+                                <input name="listing[name]" placeholder="enter title" type="text" class="form-control">
+                            </div>
+
+                            <br>
+
+                            <!-- Email -->
+                            <div>
+                                <label for="e-mail" class="form-label">E-mail*</label>
+                                <input name="listing[email]" placeholder="enter E-mail" type="email"
+                                    class="form-control">
+                            </div>
+
+                            <br>
+
+                            <!-- Phone Number -->
+                            <div>
+                                <label for="number" class="form-label">Phone Number*</label>
+                                <input name="listing[phoneNumber]" placeholder="enter Phone Number" type="number"
+                                    class="form-control">
+                            </div>
+
+                            <br>
+
+                            <!-- Property Address -->
+                            <div>
+                                <label for="property_address" class="form-label">Property Address</label>
+                                <textarea name="listing[propertyAddress]" class="form-control"></textarea>
+                            </div>
+
+                            <br>
+
+                            <!-- Property Type -->
+                            <label for="propertyType" class="form-label">Property Type</label>
+                            <select id="propertyType" name="listing[propertyType]" class="form-control"
+                                onchange="toggleOtherInput()">
+                                <option value="farm-house">Farm House</option>
+                                <option value="apartment">Apartment/Flats</option>
+                                <option value="villa">Villa</option>
+                                <option value="private-room">Private Room</option>
+                                <option value="bungalow">Bungalows</option>
+                                <option value="commercial-purpose">Commercial Purpose</option>
+                                <option value="other">Other</option>
+                            </select>
+
+                            <br>
+
+                            <!-- Hidden text area for 'Other' property type -->
+                            <div id="otherInput" style="display: none; margin-top: 10px;">
+                                <label for="otherProperty" class="form-label">Please Specify: THIS FIELD IS
+                                    REQUIRED</label>
+                                <textarea id="otherProperty" name="listing[otherProperty]" class="form-control"
+                                    placeholder="Enter property type or type n/a"></textarea>
+                            </div>
+
+                            <br>
+
+                            <!-- Services -->
+                            <div>
+                                <label class="form-label">Services Required / Select All That Apply</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="listing[services][]"
+                                        value="property-management" id="service1">
+                                    <label class="form-check-label" for="service1">Property Management</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="listing[services][]"
+                                        value="digital-marketing" id="service2">
+                                    <label class="form-check-label" for="service2">Digital Marketing</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="listing[services][]"
+                                        value="consulting-services" id="service3">
+                                    <label class="form-check-label" for="service3">Consulting Services</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="listing[services][]"
+                                        value="service-for-guests" id="service4">
+                                    <label class="form-check-label" for="service4">Service for Guests</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="listing[services][]"
+                                        value="service-for-clients" id="service5">
+                                    <label class="form-check-label" for="service5">Service for Clients</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="listing[services][]"
+                                        value="other" id="service6" onchange="toggleOtherService()">
+                                    <label class="form-check-label" for="service6">Other</label>
+                                </div>
+                            </div>
+
+                            <br>
+
+                            <!-- Hidden text area for 'Other' service -->
+                            <div id="otherServiceInput" style="display: none; margin-top: 10px;">
+                                <label for="otherService" class="form-label">Please Specify: THIS FIELD IS
+                                    REQUIRED</label>
+                                <textarea id="otherService" name="listing[otherService]" class="form-control"
+                                    placeholder="Enter your service or type n/a"></textarea>
+                            </div>
+
+                            <br>
+
+                            <button class="btn btn-dark"
+                                style="display: block; margin: 20px auto; width: 200px;">Book</button>
+                        </form>
+
+                        <br>
+
+                        <script src="/javascript/newJavascript.js" defer></script>
+    </body>
